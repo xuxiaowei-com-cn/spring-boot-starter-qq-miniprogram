@@ -87,7 +87,7 @@ public interface QQMiniProgramService {
 	 * {@link OAuth2TokenEndpointConfigurer#errorResponseHandler(AuthenticationFailureHandler)}
 	 * 拦截处理此异常
 	 */
-	QQMiniprogramTokenResponse getAccessTokenResponse(String appid, String code, String jsCode2SessionUrl)
+	QQMiniProgramTokenResponse getAccessTokenResponse(String appid, String code, String jsCode2SessionUrl)
 			throws OAuth2AuthenticationException;
 
 	/**
