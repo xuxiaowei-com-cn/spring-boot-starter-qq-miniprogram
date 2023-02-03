@@ -34,7 +34,7 @@ import java.io.Serializable;
  * "https://q.qq.com/wiki/develop/game/server/open-port/login.html">登录凭证校验</a>
  */
 @Data
-public class Code2SessionResponse implements Serializable {
+public class QQMiniprogramTokenResponse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

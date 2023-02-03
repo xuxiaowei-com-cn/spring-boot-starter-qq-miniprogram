@@ -32,9 +32,9 @@ import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
-import org.springframework.security.oauth2.server.authorization.client.Code2SessionResponse;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.QQMiniProgramService;
+import org.springframework.security.oauth2.server.authorization.client.QQMiniprogramTokenResponse;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2QQMiniProgramConfigurerUtils;
 import org.springframework.security.oauth2.server.authorization.context.AuthorizationServerContextHolder;
 import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcUserInfoAuthenticationProvider;
@@ -131,12 +131,12 @@ public class OAuth2QQMiniProgramAuthenticationProvider implements Authentication
 			throw new OAuth2AuthenticationException(error);
 		}
 
-		Code2SessionResponse code2SessionResponse = qqMiniProgramService.getCode2SessionResponse(appid, code,
+		QQMiniprogramTokenResponse qqMiniprogramTokenResponse = qqMiniProgramService.getAccessTokenResponse(appid, code,
 				JS_CODE2_SESSION_URL);
 
-		String openid = code2SessionResponse.getOpenid();
-		String unionid = code2SessionResponse.getUnionid();
-		String sessionKey = code2SessionResponse.getSessionKey();
+		String openid = qqMiniprogramTokenResponse.getOpenid();
+		String unionid = qqMiniprogramTokenResponse.getUnionid();
+		String sessionKey = qqMiniprogramTokenResponse.getSessionKey();
 
 		OAuth2Authorization.Builder builder = OAuth2Authorization.withRegisteredClient(registeredClient);
 		builder.principalName(openid);
