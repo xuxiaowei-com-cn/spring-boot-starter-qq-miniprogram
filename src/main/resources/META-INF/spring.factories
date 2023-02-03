@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.springframework.security.oauth2.server.authorization.properties.QQMiniProgramProperties,\
+  org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2QQMiniProgramConfiguration
