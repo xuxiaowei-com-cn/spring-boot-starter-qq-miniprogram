@@ -119,7 +119,7 @@ public class InMemoryQQMiniProgramService implements QQMiniProgramService {
 	 * 拦截处理此异常
 	 */
 	@Override
-	public QQMiniprogramTokenResponse getAccessTokenResponse(String appid, String code, String jsCode2SessionUrl)
+	public QQMiniProgramTokenResponse getAccessTokenResponse(String appid, String code, String jsCode2SessionUrl)
 			throws OAuth2AuthenticationException {
 		Map<String, String> uriVariables = new HashMap<>(8);
 		uriVariables.put(OAuth2QQMiniProgramParameterNames.APPID, appid);
@@ -133,11 +133,11 @@ public class InMemoryQQMiniProgramService implements QQMiniProgramService {
 
 		String forObject = restTemplate.getForObject(jsCode2SessionUrl, String.class, uriVariables);
 
-		QQMiniprogramTokenResponse accessTokenResponse;
+		QQMiniProgramTokenResponse accessTokenResponse;
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			accessTokenResponse = objectMapper.readValue(forObject, QQMiniprogramTokenResponse.class);
+			accessTokenResponse = objectMapper.readValue(forObject, QQMiniProgramTokenResponse.class);
 		}
 		catch (JsonProcessingException e) {
 			OAuth2Error error = new OAuth2Error(OAuth2QQMiniProgramEndpointUtils.ERROR_CODE,

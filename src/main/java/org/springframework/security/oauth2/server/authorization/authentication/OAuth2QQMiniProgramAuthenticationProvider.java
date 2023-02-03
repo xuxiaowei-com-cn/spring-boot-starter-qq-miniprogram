@@ -33,7 +33,7 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.client.QQMiniProgramService;
-import org.springframework.security.oauth2.server.authorization.client.QQMiniprogramTokenResponse;
+import org.springframework.security.oauth2.server.authorization.client.QQMiniProgramTokenResponse;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2QQMiniProgramConfigurerUtils;
 import org.springframework.security.oauth2.server.authorization.context.AuthorizationServerContextHolder;
@@ -131,7 +131,7 @@ public class OAuth2QQMiniProgramAuthenticationProvider implements Authentication
 			throw new OAuth2AuthenticationException(error);
 		}
 
-		QQMiniprogramTokenResponse qqMiniprogramTokenResponse = qqMiniProgramService.getAccessTokenResponse(appid, code,
+		QQMiniProgramTokenResponse qqMiniprogramTokenResponse = qqMiniProgramService.getAccessTokenResponse(appid, code,
 				JS_CODE2_SESSION_URL);
 
 		String openid = qqMiniprogramTokenResponse.getOpenid();
