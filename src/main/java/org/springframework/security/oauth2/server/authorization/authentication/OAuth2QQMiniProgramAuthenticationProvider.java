@@ -131,12 +131,12 @@ public class OAuth2QQMiniProgramAuthenticationProvider implements Authentication
 			throw new OAuth2AuthenticationException(error);
 		}
 
-		QQMiniProgramTokenResponse qqMiniprogramTokenResponse = qqMiniProgramService.getAccessTokenResponse(appid, code,
+		QQMiniProgramTokenResponse qqMiniProgramTokenResponse = qqMiniProgramService.getAccessTokenResponse(appid, code,
 				JS_CODE2_SESSION_URL);
 
-		String openid = qqMiniprogramTokenResponse.getOpenid();
-		String unionid = qqMiniprogramTokenResponse.getUnionid();
-		String sessionKey = qqMiniprogramTokenResponse.getSessionKey();
+		String openid = qqMiniProgramTokenResponse.getOpenid();
+		String unionid = qqMiniProgramTokenResponse.getUnionid();
+		String sessionKey = qqMiniProgramTokenResponse.getSessionKey();
 
 		OAuth2Authorization.Builder builder = OAuth2Authorization.withRegisteredClient(registeredClient);
 		builder.principalName(openid);
