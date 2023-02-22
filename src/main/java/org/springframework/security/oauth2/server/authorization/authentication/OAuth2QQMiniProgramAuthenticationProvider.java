@@ -111,7 +111,7 @@ public class OAuth2QQMiniProgramAuthenticationProvider implements Authentication
 		Set<String> requestedScopes = StringUtils.commaDelimitedListToSet(grantAuthenticationToken.getScope());
 
 		OAuth2ClientAuthenticationToken clientPrincipal = OAuth2AuthenticationProviderUtils
-				.getAuthenticatedClientElseThrowInvalidClient(grantAuthenticationToken);
+			.getAuthenticatedClientElseThrowInvalidClient(grantAuthenticationToken);
 		RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
 		if (registeredClient == null) {
